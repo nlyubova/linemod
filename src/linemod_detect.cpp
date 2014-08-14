@@ -85,7 +85,7 @@ drawResponse(const std::vector<cv::linemod::Template>& templates, int num_modali
     num_modalities = 5;
   for (int m = 0; m < num_modalities; ++m)
   {
-// NOTE: Original demo recalculated max response for each feature in the TxT
+// NOTE: Original demo recalculated max response for each feature in tad TxT
 // box around it and chose the display color based on that response. Here
 // the display color just depends on the modality.
     cv::Scalar color = COLORS[m];
@@ -140,8 +140,8 @@ struct Detector: public object_recognition_core::db::bases::ModelReaderBase {
       renderer_radius_min_  = document.get_field<double>("renderer_radius_min");
       renderer_radius_max_ = document.get_field<double>("renderer_radius_max");
       renderer_radius_step_ = document.get_field<double>("renderer_radius_step");
-      renderer_width_ = document.get_field<int>("renderer_width");
-      renderer_height_ = document.get_field<int>("renderer_height");
+      renderer_width_ = document.get_field<size_t>("renderer_width");
+      renderer_height_ = document.get_field<size_t>("renderer_height");
       renderer_focal_length_x_ = document.get_field<double>("renderer_focal_length_x");
       renderer_focal_length_y_ = document.get_field<double>("renderer_focal_length_y");
       renderer_near_ = document.get_field<double>("renderer_near");
@@ -511,9 +511,9 @@ struct Detector: public object_recognition_core::db::bases::ModelReaderBase {
     /** Renderer parameter: the step scale sampling*/
     double renderer_radius_step_;
     /** Renderer parameter: image width */
-    int renderer_width_;
+    size_t renderer_width_;
     /** Renderer parameter: image height */
-    int renderer_height_;
+    size_t renderer_height_;
     /** Renderer parameter: near distance */
     double renderer_near_;
     /** Renderer parameter: far distance */
